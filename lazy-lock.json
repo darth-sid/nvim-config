@@ -15,8 +15,10 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "python-syntax": { "branch": "master", "commit": "2cc00ba72929ea5f9456a26782db57fb4cc56a65" },
   "ripgrep": { "branch": "master", "commit": "79cbe89deb1151e703f4d91b19af9cdcc128b765" },
-  "ruff": { "branch": "main", "commit": "901b7dd8f8959fa79450a1e57edef0b080414100" },
+  "ruff": { "branch": "main", "commit": "8a98d888474a1c1a5bff61fe94f8d875c1a4ccb2" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "vim-closer": { "branch": "master", "commit": "6007d9db0a35e983af246b667282606612076b07" },
-  "vim-fugitive": { "branch": "master", "commit": "174230d6a7f2df94705a7ffd8d5413e27ec10a80" }
+  "vim-endwise": { "branch": "master", "commit": "5ec72eef1a07fb32af9be5402144678f68cb1a7a" },
+  "vim-fugitive": { "branch": "master", "commit": "174230d6a7f2df94705a7ffd8d5413e27ec10a80" },
+  "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" }
 }

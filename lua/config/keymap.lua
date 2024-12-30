@@ -13,19 +13,19 @@ mappings = {
     {'n', "<M-k>", "<C-w>K", default_opts},
     {'n', "<M-l>", "<C-w>L", default_opts},
     --buffer util
-    {'n', '<leader>l', '<cmd>bn<CR>', default_opts},
-    {'n', '<leader>h', '<cmd>bp<CR>', default_opts},
-    {'n', '<leader>x', '<cmd>bp|sp|bn|bd<CR>', default_opts},
+    {'n', '<leader>l', '<cmd>bn<cr>', default_opts},
+    {'n', '<leader>h', '<cmd>bp<cr>', default_opts},
+    {'n', '<leader>x', '<cmd>bp|sp|bn|bd<cr>', default_opts},
     --clipboard copy
     {"n", "<leader>y", "\"+y", default_opts},
     {"v", "<leader>y", "\"+y", default_opts},
     {"n", "<leader>Y", "\"+Y", default_opts},
     --splits
-    {'n', '<leader>v', '<cmd>vsp<CR>', default_opts},
-    {'n', '<leader>s', '<cmd>sp<CR>', default_opts},
+    {'n', '<leader>v', '<cmd>vsp<cr>', default_opts},
+    {'n', '<leader>s', '<cmd>sp<cr>', default_opts},
     --cmd shortcuts
-    {'n', '<leader>w', '<cmd>w<CR>', default_opts},
-    {'n', '<leader>q', '<cmd>qa<CR>', default_opts},
+    {'n', '<leader>w', '<cmd>w<cr>', default_opts},
+    {'n', '<leader>q', '<cmd>qa<cr>', default_opts},
 
 }
 
@@ -35,10 +35,10 @@ end
 
 hard_mappings = {
     --disable arrow keys
-    {'n', '<Left>', '<cmd>echoe "Use h"<CR>', default_opts},
-    {'n', '<Right>', '<cmd>echoe "Use l"<CR>', default_opts},
-    {'n', '<Up>', '<cmd>echoe "Use k"<CR>', default_opts},
-    {'n', '<Down>', '<cmd>echoe "Use j"<CR>', default_opts},
+    {'n', '<Left>', '<cmd>echoe "Use h"<cr>', default_opts},
+    {'n', '<Right>', '<cmd>echoe "Use l"<cr>', default_opts},
+    {'n', '<Up>', '<cmd>echoe "Use k"<cr>', default_opts},
+    {'n', '<Down>', '<cmd>echoe "Use j"<cr>', default_opts},
     {'i', '<Left>', '<Nop>', default_opts},
     {'i', '<Right>', '<Nop>', default_opts},
     {'i', '<Up>', '<Nop>', default_opts},
