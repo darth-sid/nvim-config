@@ -18,3 +18,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup('plugins')
+vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>Lazy<cr>', {noremap=true,silent=true})
