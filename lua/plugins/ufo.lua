@@ -24,23 +24,27 @@ return {
 		vim.opt.foldlevel = 99 
 		vim.opt.foldlevelstart = 99
         vim.opt.foldenable=true
-
 	end,
     config = function()
         -- use nvim-lspconfig to detect folds
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true
-        }
-        local lsp = require('lspconfig')
-        local language_servers = lsp.util.available_servers()
-        for _, ls in ipairs(language_servers) do
-            lsp[ls].setup({
-                capabilities = capabilities
-            })
-        end
+        --local capabilities = vim.lsp.protocol.make_client_capabilities()
+        --capabilities.textDocument.foldingRange = {
+        --    dynamicRegistration = false,
+        --    lineFoldingOnly = true
+        --}
+        --local lsp = require('lspconfig')
+        --local language_servers = lsp.util.available_servers()
+        --for _, ls in ipairs(language_servers) do
+        --    --lsp[ls].setup({
+        --    --    capabilities = capabilities
+        --    --})
+        --end
        
-        require('ufo').setup()
+        -- treesitter as fold provider
+        require('ufo').setup{
+            provider_selector = function(bufnr, filetype, buftype)
+                return {'treesitter', 'indent'}
+            end
+        }
     end
 }
