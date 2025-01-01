@@ -35,14 +35,18 @@ end
 
 hard_mappings = {
     --disable arrow keys
+    {'v', '<Left>', '<cmd>echoe "Use h"<cr>', default_opts},
+    {'v', '<Right>', '<cmd>echoe "Use l"<cr>', default_opts},
+    {'v', '<Up>', '<cmd>echoe "Use k"<cr>', default_opts},
+    {'v', '<Down>', '<cmd>echoe "Use j"<cr>', default_opts},
     {'n', '<Left>', '<cmd>echoe "Use h"<cr>', default_opts},
     {'n', '<Right>', '<cmd>echoe "Use l"<cr>', default_opts},
     {'n', '<Up>', '<cmd>echoe "Use k"<cr>', default_opts},
     {'n', '<Down>', '<cmd>echoe "Use j"<cr>', default_opts},
-    {'i', '<Left>', '<Nop>', default_opts},
-    {'i', '<Right>', '<Nop>', default_opts},
-    {'i', '<Up>', '<Nop>', default_opts},
-    {'i', '<Down>', '<Nop>', default_opts},
+    {'i', '<Left>', '<cmd>echoe "Use h"<cr>', default_opts},
+    {'i', '<Right>', '<cmd>echoe "Use l"<cr>', default_opts},
+    {'i', '<Up>', '<cmd>echoe "Use k"<cr>', default_opts},
+    {'i', '<Down>', '<cmd>echoe "Use j"<cr>', default_opts},
 }
 
 local hard = true
