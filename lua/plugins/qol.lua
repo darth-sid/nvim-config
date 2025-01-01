@@ -1,17 +1,16 @@
 return {
     {
         'rstacruz/vim-closer',
-        lazy=false,
+        lazy=true,
         event='InsertEnter',
     },
     {
         'tpope/vim-endwise',
-        lazy=false,
+        lazy=true,
         event='InsertEnter',
     },
     {
         'machakann/vim-sandwich',
         lazy=false,
-        event='InsertEnter',
     },
 }

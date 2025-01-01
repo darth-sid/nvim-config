@@ -15,10 +15,8 @@ return {
     },
     {'norcalli/nvim-colorizer.lua', 
         lazy=true,
-        ft={ -- only load for css or vue files
-            'css',
-            'vue',
-        },
+        ft={'css', 'vue'},
+        opts={'css','vue'}
     },
     {'nvim-lualine/lualine.nvim', 
         lazy=false, -- always load
