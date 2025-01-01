@@ -9,6 +9,7 @@ return {
                 'python',
                 'typescript',
                 'vue',
+                'css',
                 'cpp',
             },
             highlight = {

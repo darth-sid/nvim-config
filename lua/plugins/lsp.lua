@@ -15,7 +15,6 @@ return {
                 'pyright', -- advanced python ( type checking, etc )
                 'ruff', -- fast python linting and formatting
                 'ts_ls', -- ts lsp
-                'eslint', -- js/ts linting and formatting
                 'volar', -- vue lsp
             },
         },
@@ -83,17 +82,6 @@ return {
                         tsdk = vim.fn.getcwd() .. '/node_modules/typescript/lib',
                     },
                 },
-            }
-
-            -- FIXME
-            lsp.eslint.setup{
-                filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' , 'vue' },
-                on_attach = function(client, bufnr)
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        command = "EslintFixAll",
-                    })
-                end,
             }
 
             require('coq_3p') {
