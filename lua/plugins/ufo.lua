@@ -20,7 +20,7 @@ return {
         'UfoEnable',
     },
     init = function()
-        vim.opt.foldcolumn='1' -- show fold levels on left (0 for off)
+        vim.opt.foldcolumn='0' -- show fold levels on left (0 for off)
 		vim.opt.foldlevel = 99 
 		vim.opt.foldlevelstart = 99
         vim.opt.foldenable=true
@@ -40,7 +40,7 @@ return {
                 capabilities = capabilities
             })
         end
-        
+       
         require('ufo').setup()
     end
 }

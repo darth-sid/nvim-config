@@ -7,6 +7,9 @@ return {
     {
         'williamboman/mason-lspconfig.nvim',
         lazy=false,
+        dependencies = {
+            {'williamboman/mason.nvim'},
+        },
         opts={
             ensure_installed = {
                 'pyright', -- advanced python ( type checking, etc )
@@ -21,7 +24,6 @@ return {
         'neovim/nvim-lspconfig',
         lazy=false,
         dependencies = {
-            {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
             {'ms-jpq/coq_nvim', branch='coq'},
             {'ms-jpq/coq.artifacts', branch='artifacts'},
@@ -48,7 +50,7 @@ return {
             local lsp = require('lspconfig')
             local coq = require('coq')
             -- python 
-            -- TODO: clean up pyright ruff coexistence
+            -- TODO: revisit pyright ruff coexistence
             lsp.pyright.setup{coq.lsp_ensure_capabilities{
                 on_attach = function(client, buf)
                     client.server_capabilities.documentFormattingProvider = false
@@ -64,27 +66,28 @@ return {
                 end
             }}
             -- ts & vue
-            -- TODO: verify vue support
-            -- TODO: fix eslint
             lsp.ts_ls.setup{
+                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'},
                 init_options = {
                     documentFormatting = false,
                 },
-                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'},
             }
+
             lsp.volar.setup{
                 filetypes = { 'vue' },
                 init_options = {
                     vue = {
-                        hybridMpde = false,
+                        hybridMode = false,
                     },
                     typescript = {
-                        tsdk = '/opt/homebrew/lib/node_modules/typescript/lib',
+                        tsdk = vim.fn.getcwd() .. '/node_modules/typescript/lib',
                     },
                 },
             }
 
+            -- FIXME
             lsp.eslint.setup{
+                filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' , 'vue' },
                 on_attach = function(client, bufnr)
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         buffer = bufnr,
