@@ -18,5 +18,9 @@ return {
         'lewis6991/gitsigns.nvim',
         lazy=false,
         opts={},
+        keys = {
+            {'<leader>gx', '<cmd>Gitsigns toggle_deleted<cr>'},
+
+        }
     },
 }

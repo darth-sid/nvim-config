@@ -26,6 +26,8 @@ mappings = {
     --cmd shortcuts
     {'n', '<leader>w', '<cmd>w<cr>', default_opts},
     {'n', '<leader>q', '<cmd>qa<cr>', default_opts},
+    --expand error
+    {'n', '<enter>', '<cmd>lua vim.diagnostic.open_float()<cr>', default_opts},
 
 }
 

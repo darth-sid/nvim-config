@@ -11,6 +11,10 @@ return {
     },
     {
         'nvim-focus/focus.nvim',
+        lazy=true,
+        cmd = {
+            'FocusEnable',
+        },
         version = '*',
         opts={
             autoresize = {

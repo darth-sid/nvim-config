@@ -16,6 +16,7 @@ return {
                 'ruff', -- fast python linting and formatting
                 'ts_ls', -- ts lsp
                 'volar', -- vue lsp
+                'golangci-lint',
             },
         },
     },
@@ -83,6 +84,19 @@ return {
                     },
                 },
             }
+
+            lsp.rust_analyzer.setup{
+                filetypes = { 'rust' },
+                settings = {
+                    ['rust-analyzer'] = {
+                        diagnostics = {
+                            enable = false,
+                        },
+                    },
+                },
+            }
+
+            lsp.golangci_lint.setup{coq.lsp_ensure_capabilities{}}
 
             require('coq_3p') {
                 {src = 'bc', short_name = 'MATH', precision = 6} -- scientific calculator

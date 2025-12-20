@@ -19,3 +19,11 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.cmd('set formatoptions-=cro')
     end,
 })
+--ignore term buffer
+vim.api.nvim_create_autocmd('TermOpen', {
+    pattern='*',
+    callback=function()
+        vim.cmd('setlocal nobuflisted')
+    end,
+
+})
