@@ -11,6 +11,8 @@ return {
                 'vue',
                 'css',
                 'cpp',
+                'rust',
+                'go',
             },
             highlight = {
                 enable = true,

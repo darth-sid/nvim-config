@@ -16,7 +16,10 @@ return {
                 'ruff', -- fast python linting and formatting
                 'ts_ls', -- ts lsp
                 'volar', -- vue lsp
+                'rust_analyzer', -- rust lsp
+                'gopls', -- go lsp
                 'golangci-lint',
+                'java_language_server',
             },
         },
     },
@@ -85,18 +88,21 @@ return {
                 },
             }
 
-            lsp.rust_analyzer.setup{
+            lsp.rust_analyzer.setup{coq.lsp_ensure_capabilities{
                 filetypes = { 'rust' },
                 settings = {
                     ['rust-analyzer'] = {
-                        diagnostics = {
-                            enable = false,
+                        cargo = {
+                            allFeatures = true,
+                        },
+                        checkOnSave = {
+                            command = "clippy",
                         },
                     },
                 },
-            }
+            }}
 
-            lsp.golangci_lint.setup{coq.lsp_ensure_capabilities{}}
+            lsp.gopls.setup{coq.lsp_ensure_capabilities{}}
 
             require('coq_3p') {
                 {src = 'bc', short_name = 'MATH', precision = 6} -- scientific calculator
