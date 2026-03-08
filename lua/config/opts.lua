@@ -1,5 +1,6 @@
 options = {
     showmatch = true,
+    ignorecase = true,
     smartcase = true,
     tabstop=4,
     softtabstop=4,

@@ -55,13 +55,13 @@ return {
             -- python 
             -- TODO: revisit pyright ruff coexistence
             lsp.pyright.setup{coq.lsp_ensure_capabilities{
-                on_attach = function(client, buf)
+                on_attach = function(client, _)
                     client.server_capabilities.documentFormattingProvider = false
                     client.server_capabilities.documentRangeFormattingProvider = false
                 end
             }}
             lsp.ruff.setup{coq.lsp_ensure_capabilities{
-                on_attach = function(client, buf) 
+                on_attach = function(client, _)
                     client.server_capabilities.documentFormattingProvider = true
                     client.server_capabilities.documentRangeFormattingProvider = true
                     client.server_capabilities.hoverProvider = false
@@ -69,14 +69,14 @@ return {
                 end
             }}
             -- ts & vue
-            lsp.ts_ls.setup{
+            lsp.ts_ls.setup{coq.lsp_ensure_capabilities{
                 filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'},
                 init_options = {
                     documentFormatting = false,
                 },
-            }
+            }}
 
-            lsp.volar.setup{
+            lsp.volar.setup{coq.lsp_ensure_capabilities{
                 filetypes = { 'vue' },
                 init_options = {
                     vue = {
@@ -86,7 +86,7 @@ return {
                         tsdk = vim.fn.getcwd() .. '/node_modules/typescript/lib',
                     },
                 },
-            }
+            }}
 
             lsp.rust_analyzer.setup{coq.lsp_ensure_capabilities{
                 filetypes = { 'rust' },

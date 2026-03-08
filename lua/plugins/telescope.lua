@@ -39,7 +39,7 @@ return {
                     },
                 },
             },
-            extensinos = {
+            extensions = {
                 fzf = {
                     fuzzy = true,
                     override_generic_sorter = true,

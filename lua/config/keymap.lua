@@ -15,7 +15,7 @@ mappings = {
     --buffer util
     {'n', '<leader>l', '<cmd>bn<cr>', default_opts},
     {'n', '<leader>h', '<cmd>bp<cr>', default_opts},
-    {'n', '<leader>x', '<cmd>bp|sp|bn|bd<cr>', default_opts},
+    {'n', '<leader>x', '<cmd>lua local b = vim.fn.bufnr(); vim.cmd("bp"); vim.cmd("bd " .. b)<cr>', default_opts},
     --clipboard copy
     {"n", "<leader>y", "\"+y", default_opts},
     {"v", "<leader>y", "\"+y", default_opts},
@@ -37,18 +37,18 @@ end
 
 hard_mappings = {
     --disable arrow keys
-    {'v', '<Left>', '<cmd>echoe "Use h"<cr>', default_opts},
-    {'v', '<Right>', '<cmd>echoe "Use l"<cr>', default_opts},
-    {'v', '<Up>', '<cmd>echoe "Use k"<cr>', default_opts},
-    {'v', '<Down>', '<cmd>echoe "Use j"<cr>', default_opts},
-    {'n', '<Left>', '<cmd>echoe "Use h"<cr>', default_opts},
-    {'n', '<Right>', '<cmd>echoe "Use l"<cr>', default_opts},
-    {'n', '<Up>', '<cmd>echoe "Use k"<cr>', default_opts},
-    {'n', '<Down>', '<cmd>echoe "Use j"<cr>', default_opts},
-    {'i', '<Left>', '<cmd>echoe "Use h"<cr>', default_opts},
-    {'i', '<Right>', '<cmd>echoe "Use l"<cr>', default_opts},
-    {'i', '<Up>', '<cmd>echoe "Use k"<cr>', default_opts},
-    {'i', '<Down>', '<cmd>echoe "Use j"<cr>', default_opts},
+    {'v', '<Left>', '<cmd>echoerr "Use h"<cr>', default_opts},
+    {'v', '<Right>', '<cmd>echoerr "Use l"<cr>', default_opts},
+    {'v', '<Up>', '<cmd>echoerr "Use k"<cr>', default_opts},
+    {'v', '<Down>', '<cmd>echoerr "Use j"<cr>', default_opts},
+    {'n', '<Left>', '<cmd>echoerr "Use h"<cr>', default_opts},
+    {'n', '<Right>', '<cmd>echoerr "Use l"<cr>', default_opts},
+    {'n', '<Up>', '<cmd>echoerr "Use k"<cr>', default_opts},
+    {'n', '<Down>', '<cmd>echoerr "Use j"<cr>', default_opts},
+    {'i', '<Left>', '<cmd>echoerr "Use h"<cr>', default_opts},
+    {'i', '<Right>', '<cmd>echoerr "Use l"<cr>', default_opts},
+    {'i', '<Up>', '<cmd>echoerr "Use k"<cr>', default_opts},
+    {'i', '<Down>', '<cmd>echoerr "Use j"<cr>', default_opts},
 }
 
 local hard = true

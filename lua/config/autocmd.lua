@@ -2,14 +2,15 @@
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern='*.py',
     callback=function()
-        vim.lsp.buf.format({async=true})
+        vim.lsp.buf.format({ async=false, name='ruff' })
     end,
 })
---prettify json files
-vim.api.nvim_create_autocmd('FileType', {
-    pattern='json',
+--prettify json buffers on open (display only, preserves file on disk)
+vim.api.nvim_create_autocmd('BufReadPost', {
+    pattern='*.json',
     callback=function()
         vim.cmd(':%!jq .')
+        vim.cmd('set nomodified')
     end,
 })
 --remove comment continuation on enter and o
