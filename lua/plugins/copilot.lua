@@ -9,7 +9,7 @@ return {
             auto_trigger = true,
             keymap = {
                 accept = '<M-l>',  -- separate from coq's Tab
-                dismiss = '<M-]>',
+                dismiss = '<C-]>', -- <M-]> is copilot's default `next`
             },
         },
         panel = { enabled = false },

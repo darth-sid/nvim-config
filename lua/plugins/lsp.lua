@@ -2,7 +2,13 @@ return {
     {
         'williamboman/mason.nvim',
         lazy=false,
-        opts={},
+        -- NOTE: mason.nvim itself ignores `ensure_installed`; need mason-tool-installer.nvim
+        -- for non-LSP tools like golangci-lint.
+        opts={
+            -- ensure_installed = {
+            --     'golangci-lint',
+            -- },
+        },
     },
     {
         'williamboman/mason-lspconfig.nvim',
@@ -18,8 +24,6 @@ return {
                 'volar', -- vue lsp
                 'rust_analyzer', -- rust lsp
                 'gopls', -- go lsp
-                'golangci-lint',
-                'java_language_server',
             },
         },
     },
@@ -50,33 +54,32 @@ return {
             }
         end,
         config=function()
-            local lsp = require('lspconfig')
             local coq = require('coq')
-            -- python 
+            -- python
             -- TODO: revisit pyright ruff coexistence
-            lsp.pyright.setup{coq.lsp_ensure_capabilities{
+            vim.lsp.config('pyright', coq.lsp_ensure_capabilities{
                 on_attach = function(client, _)
                     client.server_capabilities.documentFormattingProvider = false
                     client.server_capabilities.documentRangeFormattingProvider = false
                 end
-            }}
-            lsp.ruff.setup{coq.lsp_ensure_capabilities{
+            })
+            vim.lsp.config('ruff', coq.lsp_ensure_capabilities{
                 on_attach = function(client, _)
                     client.server_capabilities.documentFormattingProvider = true
                     client.server_capabilities.documentRangeFormattingProvider = true
                     client.server_capabilities.hoverProvider = false
                     client.server_capabilities.definitionProvider = false
                 end
-            }}
+            })
             -- ts & vue
-            lsp.ts_ls.setup{coq.lsp_ensure_capabilities{
+            vim.lsp.config('ts_ls', coq.lsp_ensure_capabilities{
                 filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'},
                 init_options = {
                     documentFormatting = false,
                 },
-            }}
+            })
 
-            lsp.volar.setup{coq.lsp_ensure_capabilities{
+            vim.lsp.config('volar', coq.lsp_ensure_capabilities{
                 filetypes = { 'vue' },
                 init_options = {
                     vue = {
@@ -86,23 +89,26 @@ return {
                         tsdk = vim.fn.getcwd() .. '/node_modules/typescript/lib',
                     },
                 },
-            }}
+            })
 
-            lsp.rust_analyzer.setup{coq.lsp_ensure_capabilities{
+            vim.lsp.config('rust_analyzer', coq.lsp_ensure_capabilities{
                 filetypes = { 'rust' },
                 settings = {
                     ['rust-analyzer'] = {
                         cargo = {
                             allFeatures = true,
                         },
-                        checkOnSave = {
+                        checkOnSave = true,
+                        check = {
                             command = "clippy",
                         },
                     },
                 },
-            }}
+            })
 
-            lsp.gopls.setup{coq.lsp_ensure_capabilities{}}
+            vim.lsp.config('gopls', coq.lsp_ensure_capabilities{})
+
+            vim.lsp.enable({'pyright', 'ruff', 'ts_ls', 'volar', 'rust_analyzer', 'gopls'})
 
             require('coq_3p') {
                 {src = 'bc', short_name = 'MATH', precision = 6} -- scientific calculator
